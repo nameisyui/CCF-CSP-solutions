@@ -52,7 +52,7 @@ int main()
 				}
 				if (flag) { // 地区r自到访日至生成名单当日持续处于风险状态
 					persons.insert(u);
-				}
+				}      
 			}
 		}
 		cout << i << " ";
