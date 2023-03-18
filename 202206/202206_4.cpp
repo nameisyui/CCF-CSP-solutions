@@ -4,7 +4,7 @@ CSP202206-4 光线追踪
 
 https://blog.csdn.net/fmy_xfk/article/details/126649981
 
-光线总是在平行于坐标轴的方向上传播：因为镜面角度为4度，光线出发方向总是平行于坐标轴。
+光线总是在平行于坐标轴的方向上传播：因为镜面角度为45度，光线出发方向总是平行于坐标轴。
 反射点的坐标总是整数：因为镜面两端点、光源的坐标均为整数。
 反射次数至多为log 0.8 10^-9 = 93次。
 本题最精巧之处即是“所有反射面的∣x1−x2∣之和不超过3×10^5”这个条件，这意味着，反射点的数量不会超过3×10^5， 此即解题关键。（可以用map暴力存储所有反射点!）
@@ -97,11 +97,11 @@ public:
 			if (it == psx.end()) return NULL_PD; // 不会遇到反射点
 			map<int, int>::iterator it2;
 			if (d == X_POS) {
-				it2 = it->second.upper_bound(p.x);
+				it2 = it->second.upper_bound(p.x); // upper_bound返回第一个大于p.x的元素
 				if (it2 == it->second.end()) return NULL_PD;
 			}
 			else {
-				it2 = it->second.lower_bound(p.x);
+				it2 = it->second.lower_bound(p.x); // lower_bound返回第一个大于等于p.x的元素
 				if (it2 == it->second.begin()) return NULL_PD;
 				--it2;//技巧：lower_bound的前一个就是第一个比p.x小的数
 			}
